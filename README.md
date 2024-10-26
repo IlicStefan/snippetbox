@@ -9,6 +9,17 @@ My implementation of Alex Edwards' book [Let's Go](https://lets-go.alexedwards.n
 🔧 Tools
 
 How to run:
+
+First, you need to install the Go compiler:
+```
+sudo apt install golang-go
+```
+Install MySql:
+```
+sudo apt install mysql-server
+```
+How to start the server:
 ```
 go run ./cmd/web
 ```
+
