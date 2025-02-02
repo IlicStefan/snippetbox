@@ -18,13 +18,23 @@ Install MySql:
 ```
 sudo apt install mysql-server
 ```
-Setting up the database:
+Create database:
 ```
 CREATE DATABASE snippetbox CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE snippetbox;
 ```
+Create user:
+```
+CREATE USER 'web'@'localhost';
+GRANT SELECT, INSERT, UPDATE, DELETE ON snippetbox.* TO 'web'@'localhost';
+-- Important: Make sure to swap 'pass' with your own password.
+ALTER USER 'web'@'localhost' IDENTIFIED BY 'pass';
+```
 How to start the server:
 ```
-go run ./cmd/web
+make run
 ```
-
+How to start the database:
+```
+mysql -D snippetbox -u web -p
+```
