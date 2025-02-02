@@ -18,6 +18,11 @@ Install MySql:
 ```
 sudo apt install mysql-server
 ```
+Setting up the database:
+```
+CREATE DATABASE snippetbox CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE snippetbox;
+```
 How to start the server:
 ```
 go run ./cmd/web
