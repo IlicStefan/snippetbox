@@ -10,9 +10,18 @@
 
 🔧 Setup
 
-First, you need to install the Go compiler:
+Install Go compiler:
 ```
 $ sudo apt install golang-go
+```
+Clone project:
+```
+$ git clone https://github.com/IlicStefan/snippetbox/
+```
+Upgrade packages:
+```
+$ go mod download
+$ go mod verify
 ```
 Install MySql:
 ```
