@@ -1,40 +1,50 @@
-💻 snippetbox
+# SNIPPETBOX
 
-My implementation of Alex Edwards' book [Let's Go](https://lets-go.alexedwards.net/)
 
-🎥 Screenshot
+#### My implementation of Alex Edwards' book [Let's Go](https://lets-go.alexedwards.net/)
+
+
+:camera: Screenshot
 
 ![Screenshot from 2024-10-26 13-12-33](https://github.com/user-attachments/assets/172134ef-1904-4f26-a833-9c00a5aefbd7)
 
-🔧 Tools
-
-How to run:
+🔧 Setup
 
 First, you need to install the Go compiler:
 ```
-sudo apt install golang-go
+$ sudo apt install golang-go
 ```
 Install MySql:
 ```
-sudo apt install mysql-server
+$ sudo apt install mysql-server
 ```
 Create database:
 ```
-CREATE DATABASE snippetbox CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE snippetbox;
+$ sudo mysql 
+```
+```
+mysql> CREATE DATABASE snippetbox CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+mysql> USE snippetbox;
 ```
 Create user:
 ```
-CREATE USER 'web'@'localhost';
-GRANT SELECT, INSERT, UPDATE, DELETE ON snippetbox.* TO 'web'@'localhost';
--- Important: Make sure to swap 'pass' with your own password.
-ALTER USER 'web'@'localhost' IDENTIFIED BY 'pass';
+mysql> CREATE USER 'web'@'localhost';
+mysql> GRANT ALL PRIVILEGES ON snippetbox.* TO 'web'@'localhost';
+mysql> FLUSH PRIVILEGES;
+mysql> ALTER USER 'web'@'localhost' IDENTIFIED BY 'pass';
 ```
+
+:steam_locomotive: Run
+
 How to start the server:
 ```
-make run
+$ make run
 ```
 How to start the database:
 ```
-mysql -D snippetbox -u web -p
+$ mysql -D snippetbox -u web -p
+```
+How to execute migration scripts:
+```
+$ migrate -database "mysql://web:pass@tcp(localhost:3306)/snippetbox" -path migrations up
 ```
